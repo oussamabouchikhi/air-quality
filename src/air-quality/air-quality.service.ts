@@ -44,10 +44,6 @@ export class AirQualityService {
     }
   }
 
-  /**
-   * Get paris air quality
-   * it will run every minute for (numberOfMinutes) times
-   */
   startTime = new Date().getTime();
   numberOfMinutes = 10;
   @Cron(CronExpression.EVERY_MINUTE, {
@@ -84,7 +80,6 @@ export class AirQualityService {
     }
   }
 
-  // get datetime( date and time ) where the paris zone is the most polluted ( based on your CRON JOB results).
   async getParisMostPollutedZone() {
     const entries = await this.airQualityModel.find();
 
